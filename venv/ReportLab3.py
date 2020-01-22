@@ -14,13 +14,15 @@ obxTexto.setTextOrigin(100, 300)
 obxTexto.setFont("Helvetica", 14)
 
 for linha in frase:
-   #Este realiza salto de linea
+    # Este realiza salto de linea
     obxTexto.textLine(linha)
 
-
-    #Este codigo no realiza salto de linea
-    #obxTexto.textOut(linha)
-
+    # Este codigo no realiza salto de linea
+    # obxTexto.textOut(linha)
+#    obxTexto.moveCursor(20,15)
+for espCaracter, linha in enumerate(frase):
+    obxTexto.setCharSpace(espCaracter)
+    obxTexto.textLine(" Espacio %s: %s" % (espCaracter + 1, linha))
 
 # Esto permite poner un color negro a la frase
 # Cuanto mas cerca del 0.0 se pone negro absoluto
@@ -32,6 +34,9 @@ textoLongo = """
       escrito en varias liñas
       onde se recolles nunha cadea,
       única"""
+
+# Espaciado entre palabras
+obxTexto.setWordSpace(8)
 obxTexto.textLines(textoLongo)
 
 # Esta parte del codigo te permite conocer todos los tipos de letra que existen
