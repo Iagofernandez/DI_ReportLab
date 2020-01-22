@@ -11,12 +11,38 @@ aux = canvas.Canvas("probaTexto.pdf")
 # Tmabien se indica el tipo de letra que se usará
 obxTexto = aux.beginText()
 obxTexto.setTextOrigin(100, 300)
-obxTexto.setFont("Courier", 14)
+obxTexto.setFont("Helvetica", 14)
+
 for linha in frase:
+   #Este realiza salto de linea
     obxTexto.textLine(linha)
 
+
+    #Este codigo no realiza salto de linea
+    #obxTexto.textOut(linha)
+
+
+# Esto permite poner un color negro a la frase
+# Cuanto mas cerca del 0.0 se pone negro absoluto
 obxTexto.setFillGray(0.5)
 
+# Texto escrito en varias lineas
+textoLongo = """
+      Este e un texto mais longo,
+      escrito en varias liñas
+      onde se recolles nunha cadea,
+      única"""
+obxTexto.textLines(textoLongo)
+
+# Esta parte del codigo te permite conocer todos los tipos de letra que existen
+obxTexto.setFillGray(0.5)
+
+texto = "Exemplo de tipos de letra de reportlab"
+
+# Bucle for que emplea el metodo getAvaliableFonts para recoger y imprimir una frase con cada uno de los tipos de letras
+for tipo_letra in aux.getAvailableFonts():
+    obxTexto.setFont(tipo_letra, 14)
+    obxTexto.textLine(tipo_letra + ": " + texto)
 # Permite la visualizacion del archivo
 aux.drawText(obxTexto)
 aux.showPage()
